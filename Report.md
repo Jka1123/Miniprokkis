@@ -61,9 +61,20 @@ Init.sls sisältö:
 
 Muutoksen jälkeen, tilan ajaminen onnistui virheittä ja Metasploit asentui. Tilan ajosta tuli sen verran pitkä lista tekstiä, joten en ottanut screenshottia. Käynnistettyäni Metasploitin sain herjauksen tilan puutteesta, joten joudun lisäämään virtuaalikoneelle lisää muistia käyttääkseni tätä.
 
+
+## Metasploitable 2
+
+Jotta näitä työkaluja olisi turvallista käyttää ja kokeilla Metasploitable tarjoaa tähän ratkaisun ja on luonut valmiin haavoittuvan koneen. Tämä kone pyörii Vagrantilla virtuaalisena. 
+
+Lähde: https://github.com/tonijaaskelainen/beginnerpentest/tree/master
+
+Ylläoleva lähde on Toni Jääskeläisen opinnäytetyö/tä varten rakennettu Vagrant pohjainen penausympäristö, joka asentaa debian koneen kali:n työkaluilla ja Metasploitable 2 maalin.
+
+
 ### Lähteet 
 
 https://terokarvinen.com/2023/palvelinten-hallinta-2023-kevat/
 https://stackoverflow.com/questions/19640829/how-can-i-execute-multiple-commands-using-salt-stack
 https://github.com/Justus-stack/h7_moduli/blob/main/report.md
 https://docs.metasploit.com/docs/using-metasploit/getting-started/nightly-installers.html
+https://github.com/tonijaaskelainen/beginnerpentest/tree/master
