@@ -66,6 +66,22 @@ Nyt voimme asentaa metasploitin suoraan apt:illa.
 
 
 
+Muokataan /srv/salt/toolkit hakemistossa olevaa init.sls tiedostoa, että se sisältää metasploitin asentavan tilan.
+
+
+Init.sls sisältö:
+
+<img width="390" alt="Screenshot 2023-05-15 at 21 53 40" src="https://github.com/Jka1123/Miniprokkis/assets/120730231/5d02a4c8-3c2f-4751-b51e-4241344ff50c">
+
+Nyt voimme ajaa tilan uudestaan.
+
+        sudo salt-call --local state.apply toolkit
+        
+<img width="906" alt="Screenshot 2023-05-15 at 21 57 42" src="https://github.com/Jka1123/Miniprokkis/assets/120730231/4b7479c5-6c0d-4f0d-8458-3d2abecd6e0a">
+
+
+
+
 ### Lähteet 
 
 https://terokarvinen.com/2023/palvelinten-hallinta-2023-kevat/
