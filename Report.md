@@ -44,31 +44,26 @@ Nmap toimii myös (älä skannaa mitä tahansa ilman lupaa, kyseinen kohde on Nm
 
 ### Metasploit
 
-Metasploitin asennus vaati curl:in käyttöä ja cmd.run tilan käyttöä, jotta asennus onnistuisi. Metasploitin sivuilta löytyy scripti, millä asentaa ohjelma Linuxille tai macOS:lle (https://docs.metasploit.com/docs/using-metasploit/getting-started/nightly-installers.html). 
-Tarvitsee siis muokata /srv/salt/toolkit polussa sijaitsevaa init.sls tiedostoa, että tila ajaa scriptissä olevat komennot järjestyksessä.
+Metasploit:ia ei löydy pakettikirjastosta, joten se täytyy lisätä sinne. Tehdään käyttäjän kotihakemistoon kansio "msf" ja ladataan tänne metasploit asennuspaketti.
 
-Yritettyäni ajaa koko scriptiä yhdellä komennolla, tuli virheilmoitus:
+        wget https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb
 
-<img width="984" alt="Screenshot 2023-05-08 at 22 20 12" src="https://user-images.githubusercontent.com/120730231/236913629-48da1485-c047-47e7-bbaf-fe52afdcfeff.png">
+Komento asentaa msfupdate.erb tiedoston ja tästä tiedostosta tarvitsemme pgp avaimen.
 
+        micro msfupdate.erb
+        
+Kopioidaan pitkä rimpsu alusta, missä lukee BEGIN PGP PUBLIC KEY BLOCK ja päättyy END PGP PUBLIC KEY BLOCK. 
 
-Päädyin etsimään vastausta Google:sta ja löysin mallin cmd.run komentojen ketjutukseen (https://stackoverflow.com/questions/19640829/how-can-i-execute-multiple-commands-using-salt-stack).
+Luodaan tyhjä tekstitiedosto polkuun ~/msf, nimeltä "msf.pgp" ja liitetään kopioitu avain tänne. Tämän jälkeen voimme lisätä avaimen luotettujen apt pakettien listaan. Päivitetään pakettihakemisto.
 
-Init.sls sisältö:
-
-<img width="985" alt="Screenshot 2023-05-08 at 22 17 51" src="https://user-images.githubusercontent.com/120730231/236912998-70cdd3d0-5f15-4851-b215-f4f65b17b1d7.png">
-
-
-Muutoksen jälkeen, tilan ajaminen onnistui virheittä ja Metasploit asentui. Tilan ajosta tuli sen verran pitkä lista tekstiä, joten en ottanut screenshottia. Käynnistettyäni Metasploitin sain herjauksen tilan puutteesta, joten joudun lisäämään virtuaalikoneelle lisää muistia käyttääkseni tätä.
+        sudo apt-key add msf.pgp
+        sudo apt-get update
 
 
-## Metasploitable 2
+Nyt voimme asentaa metasploitin suoraan apt:illa.
 
-Jotta näitä työkaluja olisi turvallista käyttää ja kokeilla Metasploitable tarjoaa tähän ratkaisun ja on luonut valmiin haavoittuvan koneen. Tämä kone pyörii Vagrantilla virtuaalisena. 
+        sudo apt-get install metasploit-framework
 
-Lähde: https://github.com/tonijaaskelainen/beginnerpentest/tree/master
-
-Ylläoleva lähde on Toni Jääskeläisen opinnäytetyö/tä varten rakennettu Vagrant pohjainen penausympäristö, joka asentaa debian koneen kali:n työkaluilla ja Metasploitable 2 maalin.
 
 
 ### Lähteet 
