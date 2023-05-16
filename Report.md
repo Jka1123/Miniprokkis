@@ -71,7 +71,8 @@ Muokataan /srv/salt/toolkit hakemistossa olevaa init.sls tiedostoa, että se sis
 
 Init.sls sisältö:
 
-<img width="390" alt="Screenshot 2023-05-15 at 21 53 40" src="https://github.com/Jka1123/Miniprokkis/assets/120730231/5d02a4c8-3c2f-4751-b51e-4241344ff50c">
+<img width="516" alt="Screenshot 2023-05-16 at 17 17 26" src="https://github.com/Jka1123/Miniprokkis/assets/120730231/6e643db5-7add-4584-b819-9463ade4f46e">
+
 
 Nyt voimme ajaa tilan uudestaan.
 
